@@ -2,6 +2,8 @@
 
 # Prompter
 
+### [⬇ Download Prompter for Mac](https://github.com/deniurchak/prompter/releases/latest/download/Prompter.zip)
+
 A small native teleprompter for macOS. It floats above your other windows, sits right under the camera, and can follow your voice instead of scrolling at a fixed speed.
 
 - **Voice following** – listens through the mic and keeps the word you're saying on the reading line. It waits when you pause and catches up if you skip ahead. Uses Apple's speech recognition, on-device where the language supports it.
@@ -19,7 +21,7 @@ curl -fsSL https://raw.githubusercontent.com/deniurchak/prompter/main/install.sh
 
 **Or by hand:**
 
-1. Download `Prompter.zip` from the [latest release](https://github.com/deniurchak/prompter/releases/latest) and unzip it.
+1. [Download `Prompter.zip`](https://github.com/deniurchak/prompter/releases/latest/download/Prompter.zip) and unzip it.
 2. Drag `Prompter.app` into your Applications folder and open it.
 3. macOS will refuse the first time, because the app isn't notarized by Apple. Open **System Settings → Privacy & Security**, scroll down to the message about Prompter, and click **Open Anyway**. This is only needed once.
 
