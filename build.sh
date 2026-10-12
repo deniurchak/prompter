@@ -7,7 +7,13 @@ APP=Prompter.app
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS"
 
-swiftc -O main.swift -o "$APP/Contents/MacOS/Prompter"
+# Universal binary, so the same app runs on Apple silicon and Intel Macs.
+TMPBIN=$(mktemp -d)
+for arch in arm64 x86_64; do
+    swiftc -O -target "$arch-apple-macos13.0" main.swift -o "$TMPBIN/$arch"
+done
+lipo -create "$TMPBIN/arm64" "$TMPBIN/x86_64" -output "$APP/Contents/MacOS/Prompter"
+rm -rf "$TMPBIN"
 
 # The icon is drawn by make_icon.swift; delete Prompter.icns to regenerate it.
 if [ ! -f Prompter.icns ]; then
@@ -47,6 +53,10 @@ EOF
 
 codesign --force --sign - "$APP" >/dev/null 2>&1
 echo "Built $(pwd)/$APP"
+
+# Zip for sharing (attached to GitHub releases).
+rm -f Prompter.zip
+ditto -c -k --keepParent "$APP" Prompter.zip
 
 # Keep the copy in /Applications current, so Spotlight and Launchpad find it.
 rm -rf "/Applications/$APP"

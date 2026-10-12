@@ -9,6 +9,22 @@ A small native teleprompter for macOS. It floats above your other windows, sits 
 - **Hidden from screen sharing** – asks macOS to leave the window out of screen shares and recordings. Some capture tools ignore this, so test with yours first.
 - **Works from other apps** – global shortcuts let you drive it while Zoom or Meet is in front.
 
+## Install
+
+**Quickest:** paste this into Terminal. It downloads the latest release, puts `Prompter.app` in your Applications folder and opens it.
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/deniurchak/prompter/main/install.sh | bash
+```
+
+**Or by hand:**
+
+1. Download `Prompter.zip` from the [latest release](https://github.com/deniurchak/prompter/releases/latest) and unzip it.
+2. Drag `Prompter.app` into your Applications folder and open it.
+3. macOS will refuse the first time, because the app isn't notarized by Apple. Open **System Settings → Privacy & Security**, scroll down to the message about Prompter, and click **Open Anyway**. This is only needed once.
+
+Runs on macOS 13 or later, on both Apple silicon and Intel Macs.
+
 ## Build
 
 Requires macOS 13+ and the Xcode command line tools.
